@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body, html {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact-form input, #contact-form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#contact-form button {
+    cursor: pointer;
+}
+
+#stu {
+   text-align: center;
+}
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="about">
+        <h1>About Me</h1>
+        <p>As a passionate and driven individual, I am deeply committed to the field of web development,
+             where I constantly strive to excel and achieve mastery. My journey into web development was ignited by a profound interest in crafting innovative solutions
+             and harnessing the power of technology to create meaningful experiences for users.<br>
+             With a relentless pursuit of excellence, my goal is not merely to be proficient, but to become one 
+             of the best developers in the industry. I approach every project with a growth mindset,
+              viewing challenges as opportunities for learning and personal growth. Through dedication and hard work, 
+              I aim to continuously refine my skills, expand my knowledge, and push the boundaries
+               of what is possible in web development.<br>
+
+             Beyond technical proficiency, I place a strong emphasis on honing my 
+             problem-solving abilities and cultivating a deep understanding of software
+              engineering principles. I actively seek out opportunities to enhance my aptitude for
+               solving complex problems efficiently and effectively.</p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <p>
+            <ul>
+                <li>
+                     With 2 years of experience as a front-end developer a
+                      I've already had a solid foundation in  web development. 
+                      My journey so far reflects a balanced exposure to client-side and server-side technologies,
+                     which is a valuable asset in today's full-stack development landscape.
+                </li>
+                <li>
+                    My internship in .NET development has provided me with 
+                    valuable insights into server-side programming and the Microsoft ecosystem. 
+                </li>
+            </ul>
+        </p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>
+            <ul>
+                <li>Build an ecommerce shopping cart</li>
+                <li>To-do list app</li>
+                <li>Build a content management system</li>
+                <li>Orchard Project</li>
+            </ul>
+        </p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <table >
+            <tr>
+                <td><h3>Name</h3></td>
+                <td>:</td>
+                <td>G.Supriya</td>
+            </tr>
+            <tr>
+                 <td><h3>Email id:</h3></td>
+                 <td>:</td>
+                 <td>Gampasupriya@gmail.com</td>
+            </tr>
+            <tr>
+                <td><h3>Contact no</h3></td>
+                <td>:</td>
+                <td>6378386636</td>
+           </tr>
+        </table>
+       <form id="contact-form">
+            <button type="submit">Send</button>
+
+    </section>
+
+        <p id="stu">© 2024 Student Portfolio</p>
+
+    <script>
+        // Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Simple contact form submission (example)
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Thank you for your message!');
+});
+    </script>
+</body>
+</html>
