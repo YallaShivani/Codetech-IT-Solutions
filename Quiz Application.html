@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><h2>App</h2></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    #question {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+    #choices {
+      margin-bottom: 20px;
+    }
+    h2{
+      color: aquamarine;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz App</h1>
+    <div id="question"></div>
+    <div id="choices"></div>
+    <button id="nextBtn">Next</button>
+    <div id="feedback"></div>
+    <div id="score"></div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "What is the capital of France?",
+        choices: ["London", "Paris", "Rome", "Berlin"],
+        correctAnswer: 1
+      },
+      {
+        question: "Which planet is known as the Red Planet?",
+        choices: ["Mars", "Venus", "Jupiter", "Saturn"],
+        correctAnswer: 0
+      },
+      {
+        question: "What is the chemical symbol for water?",
+        choices: ["H", "O", "H2O", "HO"],
+        correctAnswer: 2
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const questionElement = document.getElementById("question");
+    const choicesElement = document.getElementById("choices");
+    const nextBtn = document.getElementById("nextBtn");
+    const feedbackElement = document.getElementById("feedback");
+    const scoreElement = document.getElementById("score");
+
+    function displayQuestion() {
+      const currentQuestion = questions[currentQuestionIndex];
+      questionElement.textContent = currentQuestion.question;
+      choicesElement.innerHTML = "";
+      currentQuestion.choices.forEach((choice, index) => {
+        const choiceButton = document.createElement("button");
+        choiceButton.textContent = choice;
+        choiceButton.addEventListener("click", () => checkAnswer(index));
+        choicesElement.appendChild(choiceButton);
+      });
+    }
+
+    function checkAnswer(choiceIndex) {
+      const currentQuestion = questions[currentQuestionIndex];
+      if (choiceIndex === currentQuestion.correctAnswer) {
+        score++;
+        feedbackElement.textContent = "Correct!";
+      } else {
+        feedbackElement.textContent = "Incorrect!";
+      }
+      scoreElement.textContent = `Score: ${score}/${questions.length}`;
+      nextBtn.disabled = false;
+      choicesElement.querySelectorAll("button").forEach(button => {
+        button.disabled = true;
+      });
+    }
+
+    function nextQuestion() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        displayQuestion();
+        nextBtn.disabled = true;
+        feedbackElement.textContent = "";
+      } else {
+        endQuiz();
+      }
+    }
+
+    function endQuiz() {
+      questionElement.textContent = "Quiz completed!";
+      choicesElement.innerHTML = "";
+      nextBtn.style.display = "none";
+      feedbackElement.textContent = "";
+      scoreElement.textContent = `Final Score: ${score}/${questions.length}`;
+    }
+
+    nextBtn.addEventListener("click", nextQuestion);
+
+    // Shuffle questions for randomization
+    questions.sort(() => Math.random() - 0.5);
+
+    displayQuestion();
+  </script>
+</body>
+</html>
